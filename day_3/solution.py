@@ -2,6 +2,7 @@ import re
 
 
 def read_input():
+    # input should have one blank line at the end
     clean_lines = []
     with open('input.txt', 'r') as file:
         lines = file.readlines()

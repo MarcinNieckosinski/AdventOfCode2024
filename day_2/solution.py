@@ -1,6 +1,7 @@
 def read_input():
+    # input should have one blank line at the end
     reports = []
-    with open('input.txt') as file:
+    with open('input.txt', 'r') as file:
         lines = file.readlines()
     for line in lines:
         reports.append(line[:-1])
