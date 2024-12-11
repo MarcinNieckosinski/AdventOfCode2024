@@ -20,37 +20,24 @@ def find_trailheads(topography):
 
 
 def find_next_points(topography, points, searched, stop=False, no_repeats=False):
-    if no_repeats:
-        next_points = set()
-    else:
-        next_points = []
+    next_points = []
     if searched + 1 <= 10:
         for p in points:
             if p[0] - 1 >= 0 and topography[p[0] - 1][p[1]] == searched:
-                if no_repeats:
-                    next_points.add((p[0] - 1, p[1]))
-                else:
-                    next_points.append((p[0] - 1, p[1]))
+                next_points.append((p[0] - 1, p[1]))
             if p[1] + 1 < len(topography[0]) and topography[p[0]][p[1] + 1] == searched:
-                if no_repeats:
-                    next_points.add((p[0], p[1] + 1))
-                else:
-                    next_points.append((p[0], p[1] + 1))
+                next_points.append((p[0], p[1] + 1))
             if p[0] + 1 < len(topography) and topography[p[0] + 1][p[1]] == searched:
-                if no_repeats:
-                    next_points.add((p[0] + 1, p[1]))
-                else:
-                    next_points.append((p[0] + 1, p[1]))
+                next_points.append((p[0] + 1, p[1]))
             if p[1] - 1 >= 0 and topography[p[0]][p[1] - 1] == searched:
-                if no_repeats:
-                    next_points.add((p[0], p[1] - 1))
-                else:
-                    next_points.append((p[0], p[1] - 1))
+                next_points.append((p[0], p[1] - 1))
         searched += 1
         searched, next_points, stop = find_next_points(topography, next_points, searched, stop, no_repeats)
     else:
         stop = True
         next_points = points
+    if no_repeats:
+        next_points = set(next_points)
     return searched, next_points, stop
 
 
