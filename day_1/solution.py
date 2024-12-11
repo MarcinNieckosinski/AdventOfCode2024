@@ -30,7 +30,6 @@ def get_similarity_score(appearances):
 
 
 l, r = read_input()
-d = get_distances(l, r)
-first_answer = sum(d)
+first_answer = get_distances(l, r)
 a = get_appearances(l, r)
 second_answer = get_similarity_score(a)
