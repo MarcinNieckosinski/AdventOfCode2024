@@ -22,17 +22,11 @@ def get_distances(left, right):
 
 
 def get_appearances(left, right):
-    appearances = []
-    for element in left:
-        appearances.append((element, right.count(element)))
-    return appearances
+    return [(element, right.count(element)) for element in left]
 
 
 def get_similarity_score(appearances):
-    score = 0
-    for appearance in appearances:
-        score += appearance[0] * appearance[1]
-    return score
+    return sum((appearance[0] * appearance[1]) for appearance in appearances)
 
 
 l, r = read_input()
